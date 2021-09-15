@@ -17,12 +17,28 @@ c.	Possui a seguinte invariante: o saldo nunca é negativo.
 
 import java.util.ArrayList;
 
+import java.util.Random;
+
 public class ContaCorrente {
 
 	private int agencia;
 	private int numero;
 	private ArrayList<Transacao> transacao;
 	private Cliente cliente;
+	private float saldo;
+
+
+		// CONSTRUCTOR
+	public ContaCorrente( Cliente cliente) {
+		Random random = new Random();
+		this.transacao = new ArrayList<>();
+		this.agencia = random.nextInt(100) +10;
+		this.numero = random.nextInt(10000) + 1000;
+		this.cliente = cliente;
+	}
+
+
+	//Metodos get e set
 
 	public int getAgencia() {
 		return this.agencia;
@@ -36,16 +52,16 @@ public class ContaCorrente {
 		return this.numero;
 	}
 
-	public void setNumero(int numero) {
-		this.numero = numero;
+	public void setNumero(int numeroDaConta) {
+		this.numero = numeroDaConta;
 	}
 
 	public ArrayList<Transacao> getTransacao() {
 		return this.transacao;
 	}
 
-	public void setTransacao() {
-		this.transacao = new ArrayList<Transacao>();
+	public void setTransacao(ArrayList<Transacao> transacao) {
+		this.transacao = transacao;
 	}
 
 	public String getCliente() {
@@ -56,59 +72,117 @@ public class ContaCorrente {
 		this.cliente = cliente;
 	}
 
-	// CONSTRUCTOR
-	public ContaCorrente(int agencia, int numero, Cliente cliente) {
-		this.transacao = new ArrayList<>();
-		this.agencia = agencia;
-		this.numero = numero;
-		this.cliente = cliente;
+	public void setSaldo(float saldo) {
+		this.saldo = saldo;
 	}
 
-	/*
-	 * 
-	 * public void depositar(ContaCorrente conta, Transacao transacao) {
-	 * 
-	 * }
-	 * 
-	 */
+	public float getSaldo(){
+		return saldo;
+	}
+	
 
-	public void depositar(float v) {
-		float deposito = v;
-		Transacao trans = new Transacao("pudim", deposito);
+
+
+ //Metodos
+
+
+	public void depositar(String descricao, float valor) {
+		
+		Transacao trans = new Transacao(descricao, valor);
 		this.transacao.add(trans);
 
+		this.setSaldo(this.getSaldo() +valor);
+
+
+
+		if (descricao.isEmpty()) {
+		String autoDescricao = "Transação realizada no dia:"+ trans.getData();
+
+			// String autoDescricao = "Transação realizada no dia:" +Integer.toString( trans.getData().getDayOfMonth()) + "/" + trans.getData().getMonthValue() + "/" + trans.getData().getgetgetYear();
+			
+		System.out.println("Descrição da transferencia: "+ autoDescricao);
+			
+		}else{
+			
+		System.out.println("Descrição da transferencia: "+ descricao);
+		}
+
+		
+		System.out.println("Foi depositado o valor de: "+ valor);
+	
+
 	}
 
-	public void retirar(float valor) {
-		int saldo = 0;
-		// um valor da conta (adicionar uma transação), desde que o saldo não fique
-		// negativo; deve retornar o valor efetivamente retirado.
-		// Ex. Saldo R$10,00 – retirar $25,00 – Transação criada vai ser de $-10. Saldo
-		// ficar 0
+	public void retirar(float valor, String descricao) {
+		float valorCorrigido;
+		
+		if(valor < 0){
+			System.out.println("AI CARALHO");
+			valorCorrigido = valor *(-1);
 
-		/*
-		 * if (0 < valor && getSaldo() > valor){ setSaldo( getSaldo() - valor);
-		 */
+		}else{ valorCorrigido = valor;}
+		
+		if (this.getSaldo() < valorCorrigido){
+				float value = this.getSaldo();
+				Transacao trans = new Transacao(descricao, valorCorrigido);
+				this.transacao.add(trans);
+				this.setSaldo(this.getSaldo() - valorCorrigido);
+				System.out.println("Não foi possível realizar a transferencia de: "+ valorCorrigido);
+				System.out.println("Então fora transferido um total de: "+ valorCorrigido);
+
+				if (descricao.isEmpty()) {
+					String autoDescricao = "Transação realizada no dia:"+ trans.getData();
+
+						// String autoDescricao = "Transação realizada no dia:" +Integer.toString( trans.getData().getDayOfMonth()) + "/" + trans.getData().getMonthValue() + "/" + trans.getData().getgetgetYear();
+						
+					System.out.println("Descrição da transferencia: "+ autoDescricao);
+				}	
+	
+
+				System.out.println("Descrição da transferencia: "+ descricao);
+
+			}else{
+			
+			Transacao trans = new Transacao(descricao, valorCorrigido);
+			this.transacao.add(trans);
+			this.setSaldo(this.getSaldo() - valorCorrigido );
+			System.out.println("Fora transferido um total de: "+ valorCorrigido*(-1));
+			System.out.println("Descrição da transferencia: "+ descricao);
+			
+		}
+		
+		
+		
+
+		
 	}
 
-	public float retornar(ArrayList<Transacao> array) {
-		return 0;
-		// o saldo da conta (somando todas as transações)
-	}
+
 
 	public void extrato() {
 		// return this.transacao.get(0).getDescricao().toString();
-
+		System.out.println("==========================================");
+		System.out.println(" EXTRATO	" );
 		System.out.println("numero da agencia:" + getAgencia());
 		System.out.println("Numero da conta: " + getNumero());
 		System.out.println("Cliente:" + cliente.getNome());
+		System.out.println("Saldo: "+ this.getSaldo());
+		System.out.println("==========================================");
 
 		// System.out.println(getCliente());
 
 		for (Transacao t : transacao) {
 			System.out.println("Valor da transação: " + t.getValor());
+			System.out.println("Data da transação: "+ t.getData());
 			System.out.println("Descrição da transação: " + t.getDescricao());
+			System.out.println("============================================");
+			System.out.println("AQUI TERMINA O EXTRATO");
 		}
+
+	
 	}
 
 }
+
+
+	

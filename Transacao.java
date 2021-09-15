@@ -18,10 +18,24 @@ public class Transacao {
 	private LocalDate data;
 	private float valor;
 
+
+
+	public Transacao(String descricaoDaTransacao, float valor) {
+		
+		this.data = LocalDate.now();
+		this.valor = valor;
+
+		if (descricaoDaTransacao.isEmpty()) {
+			this.descricao = "Transação realizada no dia:" + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"+ data.getYear();
+		}else{
+			this.descricao = descricaoDaTransacao;
+		}
+	}
+
 	public void imprimir() {
-		System.out.println(this.descricao);
-		System.out.println(this.data);
-		System.out.println(this.valor);
+		System.out.println(this.getDescricao());
+		System.out.println(this.getData());
+		System.out.println(this.getValor());
 		// Tem mais coisa aqui, mas ver oq fazer
 	}
 
@@ -37,8 +51,9 @@ public class Transacao {
 		this.descricao = descricao;
 	}
 
-	public LocalDate getData() {
-		return this.data;
+	public String getData() {
+		return  data.getDayOfMonth() + "/" + data.getMonthValue() + "/"
+					+ data.getYear();
 	}
 
 	public void setData(LocalDate data) {
@@ -50,15 +65,11 @@ public class Transacao {
 	}
 
 	public void setValor(float valor) {
-		if (valor != 0) {
+	
 			this.valor = valor;
-		}
+		
 	}
 
-	public Transacao(String descricao, float valor) {
-		this.descricao = descricao;
-		this.data = LocalDate.now();
-		this.valor = valor;
-	}
-
+	
 }
+

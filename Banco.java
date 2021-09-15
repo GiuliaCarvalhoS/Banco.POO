@@ -7,20 +7,57 @@ public class Banco {
 
 	public static void main(String[] args) {
 
-		Cliente andre = new Cliente("Andre");
+			Cliente andre = new Cliente("Andre");
 
-		ContaCorrente um = new ContaCorrente(222, 121212, andre);
+			Cliente giulia = new Cliente("Giulia");
 
-		Transacao trans = new Transacao("oioioi", 0.55f);
+			Cliente luca = new Cliente("Luca");
+	
 
-		andre.setContaCorrentes(um);
+		ContaCorrente um = new ContaCorrente( andre);
+		ContaCorrente toto = new ContaCorrente( andre);
+		
+		ContaCorrente dois = new ContaCorrente( giulia);
+		ContaCorrente doisA = new ContaCorrente( giulia);
 
-		um.depositar(0.505f);
+		ContaCorrente tres = new ContaCorrente( luca);
+		ContaCorrente a = new ContaCorrente( luca);
+		
+		 andre.setContaCorrentes(um);
+		 andre.setContaCorrentes(toto);
+		 
+		 giulia.setContaCorrentes(dois);
+		 giulia.setContaCorrentes(doisA);
 
-		um.extrato();
+		 luca.setContaCorrentes(tres);
+		 luca.setContaCorrentes(a);
 
-		// System.out.println(scoror);
+
+		 andre.operar();
+		 giulia.operar();
+		 luca.operar();
+
+		 
+		
+
+	//Validações q temos que fazer: depositar não pode ser negativo 
+	//aparecer o horario no fim do cartao
+
+
+		
+
+
+
+	
+		
+
+
+		
+
+	
+		
+		
+
 
 	}
-
 }
