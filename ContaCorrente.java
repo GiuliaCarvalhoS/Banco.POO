@@ -117,24 +117,22 @@ public class ContaCorrente {
 		float valorCorrigido;
 		
 		if(valor < 0){
-			System.out.println("AI CARALHO");
+		
 			valorCorrigido = valor *(-1);
 
 		}else{ valorCorrigido = valor;}
 		
 		if (this.getSaldo() < valorCorrigido){
 				float value = this.getSaldo();
-				Transacao trans = new Transacao(descricao, valorCorrigido);
+				Transacao trans = new Transacao(descricao, value);
 				this.transacao.add(trans);
-				this.setSaldo(this.getSaldo() - valorCorrigido);
+				this.setSaldo(this.getSaldo() - value);
 				System.out.println("Não foi possível realizar a transferencia de: "+ valorCorrigido);
-				System.out.println("Então fora transferido um total de: "+ valorCorrigido);
+				System.out.println("Então fora transferido um total de: "+ value);
 
 				if (descricao.isEmpty()) {
 					String autoDescricao = "Transação realizada no dia:"+ trans.getData();
 
-						// String autoDescricao = "Transação realizada no dia:" +Integer.toString( trans.getData().getDayOfMonth()) + "/" + trans.getData().getMonthValue() + "/" + trans.getData().getgetgetYear();
-						
 					System.out.println("Descrição da transferencia: "+ autoDescricao);
 				}	
 	

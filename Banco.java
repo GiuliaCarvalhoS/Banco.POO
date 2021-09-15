@@ -34,8 +34,7 @@ public class Banco {
 
 
 		 andre.operar();
-		 giulia.operar();
-		 luca.operar();
+		 andre.imprimir();
 
 		 
 		
