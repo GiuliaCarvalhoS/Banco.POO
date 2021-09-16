@@ -15,7 +15,7 @@ public class Banco {
 	
 
 		ContaCorrente um = new ContaCorrente( andre);
-		ContaCorrente toto = new ContaCorrente( andre);
+		// ContaCorrente toto = new ContaCorrente( andre);
 		
 		ContaCorrente dois = new ContaCorrente( giulia);
 		ContaCorrente doisA = new ContaCorrente( giulia);
@@ -24,7 +24,7 @@ public class Banco {
 		ContaCorrente a = new ContaCorrente( luca);
 		
 		 andre.setContaCorrentes(um);
-		 andre.setContaCorrentes(toto);
+		//  andre.setContaCorrentes(toto);
 		 
 		 giulia.setContaCorrentes(dois);
 		 giulia.setContaCorrentes(doisA);

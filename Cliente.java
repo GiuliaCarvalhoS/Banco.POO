@@ -131,7 +131,7 @@ public class Cliente {
 			c.retirar(valorRetirada2, descricaoRetirada2);
 
 			
-			System.out.println("Descrição da retirada: ");
+			System.out.println("Descrição da terceira retirada: ");
 			scanner.nextLine();
 			String descricaoRetirada3 =scanner.nextLine();
 			System.out.println("Informe o valor para o retirada: ");

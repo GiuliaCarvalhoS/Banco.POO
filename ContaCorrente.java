@@ -159,23 +159,36 @@ public class ContaCorrente {
 
 	public void extrato() {
 		// return this.transacao.get(0).getDescricao().toString();
-		System.out.println("==========================================");
-		System.out.println(" EXTRATO	" );
+		System.out.println("===================EXTRATO=======================");
+		System.out.println( );
 		System.out.println("numero da agencia:" + getAgencia());
 		System.out.println("Numero da conta: " + getNumero());
 		System.out.println("Cliente:" + cliente.getNome());
-		System.out.println("Saldo: "+ this.getSaldo());
+		
 		System.out.println("==========================================");
 
-		// System.out.println(getCliente());
+		System.out.println("======================Transações=========================");
 
 		for (Transacao t : transacao) {
+			
+
+
+		
+
+
+
+			System.out.println();
 			System.out.println("Valor da transação: " + t.getValor());
 			System.out.println("Data da transação: "+ t.getData());
 			System.out.println("Descrição da transação: " + t.getDescricao());
-			System.out.println("============================================");
-			System.out.println("AQUI TERMINA O EXTRATO");
+			System.out.println();
+			System.out.println("=========================================================");
+			
 		}
+
+		System.out.println("Saldo Atual: "+ this.getSaldo());
+		System.out.println();
+		System.out.println();
 
 	
 	}
