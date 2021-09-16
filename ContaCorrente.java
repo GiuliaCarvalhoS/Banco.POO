@@ -96,15 +96,14 @@ public class ContaCorrente {
 
 
 		if (descricao.isEmpty()) {
-		String autoDescricao = "Transação realizada no dia:"+ trans.getData();
+			String autoDescricao = "Transação realizada no dia:"+ trans.getData();
 
-			// String autoDescricao = "Transação realizada no dia:" +Integer.toString( trans.getData().getDayOfMonth()) + "/" + trans.getData().getMonthValue() + "/" + trans.getData().getgetgetYear();
 			
-		System.out.println("Descrição da transferencia: "+ autoDescricao);
+			System.out.println("Descrição da transferencia: "+ autoDescricao);
 			
 		}else{
 			
-		System.out.println("Descrição da transferencia: "+ descricao);
+			System.out.println("Descrição da transferencia: "+ descricao);
 		}
 
 		

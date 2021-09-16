@@ -161,15 +161,17 @@ public class Cliente {
 	}
 
 	public void imprimir() {
+		int randomIndex = random.nextInt(tipoConta.length);
 
 		System.out.println("===========================");
 		System.out.println("Cliente: "+this.getNome());
+		System.out.println("Conta do tipo: "+ tipoConta[randomIndex] );
 		System.out.println("");
 
-		int cont = 1;
+		
 		for(ContaCorrente c: contaCorrentes){
 
-			System.out.println("conta: "+cont);
+			// System.out.println("conta: "+cont);
 
 			System.out.println("Agencia: " +c.getAgencia());
 			System.out.println("Número: "+c.getNumero());
@@ -177,7 +179,7 @@ public class Cliente {
 
 			c.extrato();
 
-			cont = cont +1;
+			// cont = cont +1;
 			
 		}
 
