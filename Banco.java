@@ -14,34 +14,34 @@ public class Banco {
 			Cliente luca = new Cliente("Luca");
 	
 
-		ContaCorrente um = new ContaCorrente( andre);
-		ContaCorrente toto = new ContaCorrente( andre);
-		
-		ContaCorrente dois = new ContaCorrente( giulia);
-		ContaCorrente doisA = new ContaCorrente( giulia);
+		ContaCorrente BancoBrasil = new ContaCorrente( andre);
+		ContaCorrente Next = new ContaCorrente(andre);
 
-		ContaCorrente tres = new ContaCorrente( luca);
-		ContaCorrente a = new ContaCorrente( luca);
+		ContaCorrente Nubak = new ContaCorrente( giulia);
+		ContaCorrente Neon = new ContaCorrente( giulia);
+
+		ContaCorrente  Itau = new ContaCorrente( luca);
+		ContaCorrente Santander = new ContaCorrente( luca);
 		
-		 andre.setContaCorrentes(um);
-		 andre.setContaCorrentes(toto);
+		 andre.setContaCorrentes(BancoBrasil);
+		 andre.setContaCorrentes(Next);
 		 
-		 giulia.setContaCorrentes(dois);
-		 giulia.setContaCorrentes(doisA);
+		 giulia.setContaCorrentes(Nubak);
+		 giulia.setContaCorrentes(Neon);
 
-		 luca.setContaCorrentes(tres);
-		 luca.setContaCorrentes(a);
+		 luca.setContaCorrentes(Itau);
+		 luca.setContaCorrentes(Santander);
 
 
 		 andre.operar();
 		 giulia.operar();
 		 luca.operar();
+		//  andre.imprimir();
 
 		 
 		
 
-	//Validações q temos que fazer: depositar não pode ser negativo 
-	//aparecer o horario no fim do cartao
+
 
 
 		

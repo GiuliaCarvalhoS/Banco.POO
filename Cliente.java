@@ -11,12 +11,18 @@ iv.	Imprimir: que imprime todos os dados do cliente e das respectivas contas.
 */
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Cliente {
 
 	private String nome;
 	private ArrayList<ContaCorrente> contaCorrentes;
+
+	String[] tipoConta = {"Poupança", "Corrente"};
+	Random random = new Random();
+	
 
 	
 
@@ -48,12 +54,15 @@ public class Cliente {
 	public void operar() {
 
 		for(ContaCorrente c: contaCorrentes){
+			int randomIndex = random.nextInt(tipoConta.length);
 
 
-			System.out.println("==========================");
+			System.out.println("###########################");
+			System.out.println("Conta do tipo: "+ tipoConta[randomIndex] );
 			System.out.println("Cliente: "+ c.getCliente());
 			System.out.println("Agencia: "+ c.getAgencia());
 			System.out.println("Conta: "  + c.getNumero());
+			System.out.println("############################");
 			System.out.println("------------------------------------------");
 
 			Scanner scanner = new Scanner(System.in);
@@ -122,7 +131,7 @@ public class Cliente {
 			c.retirar(valorRetirada2, descricaoRetirada2);
 
 			
-			System.out.println("Descrição da retirada: ");
+			System.out.println("Descrição da terceira retirada: ");
 			scanner.nextLine();
 			String descricaoRetirada3 =scanner.nextLine();
 			System.out.println("Informe o valor para o retirada: ");
@@ -152,20 +161,25 @@ public class Cliente {
 	}
 
 	public void imprimir() {
+		int randomIndex = random.nextInt(tipoConta.length);
 
 		System.out.println("===========================");
 		System.out.println("Cliente: "+this.getNome());
+		System.out.println("Conta do tipo: "+ tipoConta[randomIndex] );
 		System.out.println("");
 
-		int cont = 1;
+		
 		for(ContaCorrente c: contaCorrentes){
 
-			System.out.println("conta: "+cont);
+			// System.out.println("conta: "+cont);
 
 			System.out.println("Agencia: " +c.getAgencia());
 			System.out.println("Número: "+c.getNumero());
 			System.out.println("------------------------------");
-			cont = cont +1;
+
+			c.extrato();
+
+			// cont = cont +1;
 			
 		}
 

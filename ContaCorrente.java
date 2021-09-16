@@ -96,15 +96,14 @@ public class ContaCorrente {
 
 
 		if (descricao.isEmpty()) {
-		String autoDescricao = "Transação realizada no dia:"+ trans.getData();
+			String autoDescricao = "Transação realizada no dia:"+ trans.getData();
 
-			// String autoDescricao = "Transação realizada no dia:" +Integer.toString( trans.getData().getDayOfMonth()) + "/" + trans.getData().getMonthValue() + "/" + trans.getData().getgetgetYear();
 			
-		System.out.println("Descrição da transferencia: "+ autoDescricao);
+			System.out.println("Descrição da transferencia: "+ autoDescricao);
 			
 		}else{
 			
-		System.out.println("Descrição da transferencia: "+ descricao);
+			System.out.println("Descrição da transferencia: "+ descricao);
 		}
 
 		
@@ -117,24 +116,22 @@ public class ContaCorrente {
 		float valorCorrigido;
 		
 		if(valor < 0){
-			System.out.println("AI CARALHO");
+		
 			valorCorrigido = valor *(-1);
 
 		}else{ valorCorrigido = valor;}
 		
 		if (this.getSaldo() < valorCorrigido){
 				float value = this.getSaldo();
-				Transacao trans = new Transacao(descricao, valorCorrigido);
+				Transacao trans = new Transacao(descricao, value);
 				this.transacao.add(trans);
-				this.setSaldo(this.getSaldo() - valorCorrigido);
+				this.setSaldo(this.getSaldo() - value);
 				System.out.println("Não foi possível realizar a transferencia de: "+ valorCorrigido);
-				System.out.println("Então fora transferido um total de: "+ valorCorrigido);
+				System.out.println("Então fora transferido um total de: "+ value);
 
 				if (descricao.isEmpty()) {
 					String autoDescricao = "Transação realizada no dia:"+ trans.getData();
 
-						// String autoDescricao = "Transação realizada no dia:" +Integer.toString( trans.getData().getDayOfMonth()) + "/" + trans.getData().getMonthValue() + "/" + trans.getData().getgetgetYear();
-						
 					System.out.println("Descrição da transferencia: "+ autoDescricao);
 				}	
 	
@@ -161,23 +158,36 @@ public class ContaCorrente {
 
 	public void extrato() {
 		// return this.transacao.get(0).getDescricao().toString();
-		System.out.println("==========================================");
-		System.out.println(" EXTRATO	" );
+		System.out.println("===================EXTRATO=======================");
+		System.out.println( );
 		System.out.println("numero da agencia:" + getAgencia());
 		System.out.println("Numero da conta: " + getNumero());
 		System.out.println("Cliente:" + cliente.getNome());
-		System.out.println("Saldo: "+ this.getSaldo());
+		
 		System.out.println("==========================================");
 
-		// System.out.println(getCliente());
+		System.out.println("======================Transações=========================");
 
 		for (Transacao t : transacao) {
+			
+
+
+		
+
+
+
+			System.out.println();
 			System.out.println("Valor da transação: " + t.getValor());
 			System.out.println("Data da transação: "+ t.getData());
 			System.out.println("Descrição da transação: " + t.getDescricao());
-			System.out.println("============================================");
-			System.out.println("AQUI TERMINA O EXTRATO");
+			System.out.println();
+			System.out.println("=========================================================");
+			
 		}
+
+		System.out.println("Saldo Atual: "+ this.getSaldo());
+		System.out.println();
+		System.out.println();
 
 	
 	}
