@@ -38,6 +38,9 @@ public class Banco {
 		 luca.operar();
 		//  andre.imprimir();
 
+
+	//Deus Esta Morto!!!
+
 		 
 		
 
