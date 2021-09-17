@@ -1,18 +1,18 @@
-//i.	cria três instâncias de Cliente (e, consequentemente, 
-//as respectivas instâncias de ContaCorrente com pelo menos 2 contas cada cliente)
-// //ii.	chama o método operar para cada instância de Cliente
-// //iii.	imprime os resultados
+
 
 public class Banco {
 
+	//Método main
 	public static void main(String[] args) {
 
+		//Cria três instâncias de Cliente
 			Cliente andre = new Cliente("Andre");
 
 			Cliente giulia = new Cliente("Giulia");
 
 			Cliente luca = new Cliente("Luca");
 	
+		// Cria as respectivas instâncias de ContaCorrente com pelo menos duas contas cada cliente
 
 		ContaCorrente BancoBrasil = new ContaCorrente( andre);
 		ContaCorrente Next = new ContaCorrente(andre);
@@ -23,8 +23,9 @@ public class Banco {
 		ContaCorrente  Itau = new ContaCorrente( luca);
 		ContaCorrente Santander = new ContaCorrente( luca);
 		
+		// Getters e setters de ContaCorrentes  (isso aqui deveria estar na classe cliente?)
 		 andre.setContaCorrentes(BancoBrasil);
-		 andre.setContaCorrentes(Next);
+		//  andre.setContaCorrentes(Next);
 		 
 		 giulia.setContaCorrentes(Nubak);
 		 giulia.setContaCorrentes(Neon);
@@ -32,11 +33,15 @@ public class Banco {
 		 luca.setContaCorrentes(Itau);
 		 luca.setContaCorrentes(Santander);
 
+		//Chama o método operar para cada instância de Cliente
 
-		 andre.operar();
-		 giulia.operar();
-		 luca.operar();
-		//  andre.imprimir();
+		andre.operar();
+		giulia.operar();
+		luca.operar();
+		giulia.imprimir();
+		andre.imprimir();
+		luca.imprimir();
+
 
 		 
 		

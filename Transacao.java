@@ -1,9 +1,6 @@
 /*
 1.	Classe Transacao
-a.	Contém os seguintes atributos privados:
-i.	descricao, do tipo String
-ii.	data, do tipo LocalDate
-iii.	valor, do tipo float (que pode ser positivo ou negativo)
+a.
 b.	Contém os seguintes métodos públicos:
 i.	Construtor, getters e setters (verificando se os dados estão validos)
 ii.	imprimir todos os dados da transação
@@ -13,20 +10,22 @@ ii.	imprimir todos os dados da transação
 import java.time.LocalDate;
 
 public class Transacao {
+	// Cria mais os seguintes atributos privados: descricao, do tipo String; data, do tipo LocalDate ; valor, do tipo float 
 
 	private String descricao;
 	private LocalDate data;
 	private float valor;
 
 
-
+	// Construtor que istancia os objetos data (com localDate) e valor
 	public Transacao(String descricaoDaTransacao, float valor) {
 		
 		this.data = LocalDate.now();
 		this.valor = valor;
 
+		//caso não seja inserida uma descrição, ele cria a descrição aprensentando o horario
 		if (descricaoDaTransacao.isEmpty()) {
-			this.descricao = "Transação realizada no dia:" + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"+ data.getYear();
+			this.descricao = "Transação realizada no dia: " + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"+ data.getYear();
 		}else{
 			this.descricao = descricaoDaTransacao;
 		}
@@ -42,14 +41,7 @@ public class Transacao {
 	public String getDescricao() {
 		return this.descricao;
 	}
-
-	public void setDescricao(String descricao) {
-		if (descricao.isEmpty()) {
-			this.descricao = "Transação realizada no dia:" + data.getDayOfMonth() + "/" + data.getMonthValue() + "/"
-					+ data.getYear();
-		}
-		this.descricao = descricao;
-	}
+	
 
 	public String getData() {
 		return  data.getDayOfMonth() + "/" + data.getMonthValue() + "/"

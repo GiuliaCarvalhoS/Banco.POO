@@ -1,13 +1,9 @@
 /*
 2.	Classe ContaCorrente
-a.	Contém os seguintes atributos privados:
-i.	agencia, do tipo int
-ii.	numero, do tipo int
-iii.	array do tipo ArrayList de Transacao
-iv.	cliente, do tipo Cliente
+a.	
 b.	Contém os seguintes métodos públicos:
 i.	Construtor, getters e setters (verificando se os dados estão validos)
-ii.	depositar um valor na conta (adicionar uma transação)
+ii.	
 iii.	retirar um valor da conta (adicionar uma transação), desde que o saldo não fique negativo; deve retornar o valor efetivamente retirado. 
 Ex. Saldo R$10,00 – retirar $25,00 – Transação criada vai ser de $-10. Saldo ficar 0
 iv.	retornar o saldo da conta (somando todas as transações)
@@ -16,10 +12,12 @@ c.	Possui a seguinte invariante: o saldo nunca é negativo.
 */
 
 import java.util.ArrayList;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class ContaCorrente {
+	
 
 	private int agencia;
 	private int numero;
@@ -27,8 +25,10 @@ public class ContaCorrente {
 	private Cliente cliente;
 	private float saldo;
 
+	DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
-		// CONSTRUCTOR
+
+		// CONSTRUCTOR 
 	public ContaCorrente( Cliente cliente) {
 		Random random = new Random();
 		this.transacao = new ArrayList<>();
@@ -38,7 +38,7 @@ public class ContaCorrente {
 	}
 
 
-	//Metodos get e set
+	//Métodos getters e setters
 
 	public int getAgencia() {
 		return this.agencia;
@@ -85,20 +85,28 @@ public class ContaCorrente {
 
  //Metodos
 
-
+	//Método público para depositar um valor na conta (adicionar uma transação)
 	public void depositar(String descricao, float valor) {
-		
+	
+	
+		//verificação para validar valor de deposito negativo. O programa não permite depositos negativos.
+				
+			
+			if(valor < 0){
+			valor= valor *(-1);
+		}
+
 		Transacao trans = new Transacao(descricao, valor);
 		this.transacao.add(trans);
 
 		this.setSaldo(this.getSaldo() +valor);
 
+		
 
 
+		//controle caso a descrição do deposito seja vazio, ele irá automaticamente colocar a data no lugar da descrição
 		if (descricao.isEmpty()) {
-			String autoDescricao = "Transação realizada no dia:"+ trans.getData();
-
-			
+			String autoDescricao = "Transação realizada no dia:"+ formatoDataHora.format(LocalDateTime.now());
 			System.out.println("Descrição da transferencia: "+ autoDescricao);
 			
 		}else{
@@ -107,20 +115,36 @@ public class ContaCorrente {
 		}
 
 		
-		System.out.println("Foi depositado o valor de: "+ valor);
+		System.out.println("Foi depositado o valor de: "+ valor); //Informa na tela o valor depositado
 	
 
 	}
 
 	public void retirar(float valor, String descricao) {
+		// Metodo publico para retirar um valor da conta 
 		float valorCorrigido;
+
+		//Validar parametro descricao, caso esteja vazio é autoameticamente preenchido com data e hora
+		if (descricao.isEmpty()) {
+			String autoDescricao = "Transação realizada no dia:"+ formatoDataHora.format(LocalDateTime.now());
+
+			
+			System.out.println("Descrição da transferencia: "+ autoDescricao);
+			
+		}else{
+			
+			System.out.println("Descrição da transferencia: "+ descricao);
+		}
 		
-		if(valor < 0){
+		//validar se o valor é negativo, caso seja então é convertido para positivo para melhor controle do saldo em conta
+		if(valor < 0){ 
 		
 			valorCorrigido = valor *(-1);
 
 		}else{ valorCorrigido = valor;}
 		
+
+		//verificador caso o saldo seja menor do que o valor da retirada
 		if (this.getSaldo() < valorCorrigido){
 				float value = this.getSaldo();
 				Transacao trans = new Transacao(descricao, value);
@@ -130,7 +154,7 @@ public class ContaCorrente {
 				System.out.println("Então fora transferido um total de: "+ value);
 
 				if (descricao.isEmpty()) {
-					String autoDescricao = "Transação realizada no dia:"+ trans.getData();
+					String autoDescricao = "Transação realizada no dia: "+ trans.getData();
 
 					System.out.println("Descrição da transferencia: "+ autoDescricao);
 				}	
@@ -138,7 +162,7 @@ public class ContaCorrente {
 
 				System.out.println("Descrição da transferencia: "+ descricao);
 
-			}else{
+			}else {
 			
 			Transacao trans = new Transacao(descricao, valorCorrigido);
 			this.transacao.add(trans);
@@ -149,19 +173,16 @@ public class ContaCorrente {
 		}
 		
 		
-		
-
-		
 	}
 
 
 
 	public void extrato() {
-		// return this.transacao.get(0).getDescricao().toString();
-		System.out.println("===================EXTRATO=======================");
+		
+		System.out.println("=======================EXTRATO=======================");
 		System.out.println( );
-		System.out.println("numero da agencia:" + getAgencia());
-		System.out.println("Numero da conta: " + getNumero());
+		System.out.println("Número da agencia:" + getAgencia());
+		System.out.println("Número da conta: " + getNumero());
 		System.out.println("Cliente:" + cliente.getNome());
 		
 		System.out.println("==========================================");
@@ -171,14 +192,11 @@ public class ContaCorrente {
 		for (Transacao t : transacao) {
 			
 
-
-		
-
-
-
 			System.out.println();
 			System.out.println("Valor da transação: " + t.getValor());
 			System.out.println("Data da transação: "+ t.getData());
+
+			
 			System.out.println("Descrição da transação: " + t.getDescricao());
 			System.out.println();
 			System.out.println("=========================================================");
@@ -186,9 +204,8 @@ public class ContaCorrente {
 		}
 
 		System.out.println("Saldo Atual: "+ this.getSaldo());
+		System.out.println("Data e hora: "+formatoDataHora.format(LocalDateTime.now()));
 		System.out.println();
-		System.out.println();
-
 	
 	}
 

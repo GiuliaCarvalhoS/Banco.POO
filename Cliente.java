@@ -1,15 +1,5 @@
-/*3.	Classe Cliente
-a.	Contém os seguintes atributos privados:
-i.	nome, do tipo String
-ii.	conta correntes , do tipo ArrayList de ContaCorrente
-b.	Contém os seguintes métodos públicos:
-i.	construtor (que também constrói o array de ContaCorrente), getters e setters
-ii.	operar, que chama ao menos 3 vezes os métodos para depositar, retirar, verificar saldo e imprimir os dados da respectiva conta corrente
-iii.saldo total, com o da conta correntes.
-iv.	Imprimir: que imprime todos os dados do cliente e das respectivas contas.
 
-*/
-
+//Importações 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -17,22 +7,26 @@ import java.util.Random;
 
 public class Cliente {
 
+	//Cria o atributo privado "nome" do tipo String
+	//Cria o atributo privado "contaCorrentes" , do tipo ArrayList de ContaCorrente
+
 	private String nome;
 	private ArrayList<ContaCorrente> contaCorrentes;
 
-	String[] tipoConta = {"Poupança", "Corrente"};
+
+	//Cria uma lista de tipo de contas
+	
+	String[] tipoConta = {"Poupança", "Corrente"}; //Lista a ser utilizada no array, para controle aleatorio de contas
 	Random random = new Random();
 	
 
-	
-
+	//Contructor da classe Cliente
 	public Cliente(String nome) {
 		this.nome = nome;
-		this.contaCorrentes = new ArrayList<ContaCorrente>();
-		
-		
+		this.contaCorrentes = new ArrayList<ContaCorrente>();	
 	}
 
+	//Getters e setters do atributo "nome" e do atributo "contaCorrentes"
 	public String getNome() {
 		return this.nome;
 	}
@@ -53,9 +47,13 @@ public class Cliente {
 
 	public void operar() {
 
+	//Cria o método operar	
+
 		for(ContaCorrente c: contaCorrentes){
+			//Recebe o tipo de conta (poupança ou corrente)
 			int randomIndex = random.nextInt(tipoConta.length);
 
+			//Imprimi os dados da respectiva conta corrente
 
 			System.out.println("###########################");
 			System.out.println("Conta do tipo: "+ tipoConta[randomIndex] );
@@ -65,10 +63,9 @@ public class Cliente {
 			System.out.println("############################");
 			System.out.println("------------------------------------------");
 
+			//Pede a inserção de descrição e valor do deposito, chamando o método depósitar 3 vezes
+
 			Scanner scanner = new Scanner(System.in);
-
-
-			
 
 			System.out.println("Descrição para o deposito da conta "+ c.getCliente());
     		String descricaoDeposito =scanner.nextLine();
@@ -77,13 +74,13 @@ public class Cliente {
 			Float valorDeposito = scanner.nextFloat();
 
 
-			c.depositar( descricaoDeposito ,valorDeposito);
+			c.depositar(descricaoDeposito ,valorDeposito);
 
 			System.out.println("------------------------------------------");
 
 			// Scanner scanner1 = new Scanner(System.in);
 
-			System.out.println("Descrição para o segundo deposito da conta "+ c.getCliente());
+			System.out.println("Descrição para o segundo depósito da conta: "+ c.getCliente());
 				scanner.nextLine();
     		String descricaoDeposito1 =scanner.nextLine();
 			System.out.println("Informe o valor para o deposito: ");
@@ -95,9 +92,8 @@ public class Cliente {
 
 		System.out.println("------------------------------------------");
 
-
 			
-				
+
 			System.out.println("Descrição para o terceiro deposito da conta "+ c.getCliente());
 			scanner.nextLine();
     		String descricaoDeposito2 =scanner.nextLine();
@@ -107,13 +103,16 @@ public class Cliente {
 
 			c.depositar( descricaoDeposito2 ,valorDeposito2);
 
+			//Imprime saldo após 3 depositos
+
 			System.out.println("Saldo atual:"+c.getSaldo());
 
 			System.out.println("------------------------------------------");
 
 			System.out.println("---------------Transferir----------------");
 
-			
+			//Pede a inserção de descrição e valor a ser retirado da conta em questão, chamando o método retirar 3 vezes
+
 			System.out.println("Descrição da retirada: ");
 			scanner.nextLine();
 			String descricaoRetirada1 =scanner.nextLine();
@@ -140,7 +139,7 @@ public class Cliente {
 		
 			
 
-			
+			// imprimir saldo após 3 depósitos e 3 retiradas
 
 			System.out.println("Saldo atual:"+c.getSaldo());
 
@@ -151,7 +150,7 @@ public class Cliente {
 			
 		}
 	}
-
+	//metodo que apresenta o saldo total, com o da conta correntes.
 	public void saldoTotal() {
 		for(ContaCorrente c: contaCorrentes){
 			System.out.println("O saldo da conta nº: " + c.getNumero() +" Agencia: " +c.getAgencia()+" é de: "+" R$"+ c.getSaldo());
@@ -168,10 +167,10 @@ public class Cliente {
 		System.out.println("Conta do tipo: "+ tipoConta[randomIndex] );
 		System.out.println("");
 
-		
+		//Array que irá percorrer cada conta corrente e imprimir seus dados:
 		for(ContaCorrente c: contaCorrentes){
 
-			// System.out.println("conta: "+cont);
+			
 
 			System.out.println("Agencia: " +c.getAgencia());
 			System.out.println("Número: "+c.getNumero());
@@ -179,10 +178,10 @@ public class Cliente {
 
 			c.extrato();
 
-			// cont = cont +1;
 			
 		}
 
 	}
+
 
 }
