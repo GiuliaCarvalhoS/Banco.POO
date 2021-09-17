@@ -1,7 +1,7 @@
 //i.	cria três instâncias de Cliente (e, consequentemente, 
 //as respectivas instâncias de ContaCorrente com pelo menos 2 contas cada cliente)
-// //ii.	chama o método operar para cada instância de Cliente
-// //iii.	imprime os resultados
+//ii.	chama o método operar para cada instância de Cliente
+//iii.	imprime os resultados
 
 public class Banco {
 
