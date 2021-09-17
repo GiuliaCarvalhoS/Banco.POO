@@ -5,7 +5,7 @@ public class Banco {
 	//Método main
 	public static void main(String[] args) {
 
-		//Cria três instâncias de Cliente
+		//Cria três instâncias de Cliente.
 			Cliente andre = new Cliente("Andre");
 
 			Cliente giulia = new Cliente("Giulia");
