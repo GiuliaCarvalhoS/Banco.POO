@@ -1,11 +1,4 @@
-/*
-1.	Classe Transacao
-a.
-b.	Contém os seguintes métodos públicos:
-i.	Construtor, getters e setters (verificando se os dados estão validos)
-ii.	imprimir todos os dados da transação
 
-*/
 
 import java.time.LocalDate;
 
@@ -35,7 +28,7 @@ public class Transacao {
 		System.out.println(this.getDescricao());
 		System.out.println(this.getData());
 		System.out.println(this.getValor());
-		// Tem mais coisa aqui, mas ver oq fazer
+		
 	}
 
 	public String getDescricao() {

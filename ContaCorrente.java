@@ -1,15 +1,3 @@
-/*
-2.	Classe ContaCorrente
-a.	
-b.	Contém os seguintes métodos públicos:
-i.	Construtor, getters e setters (verificando se os dados estão validos)
-ii.	
-iii.	retirar um valor da conta (adicionar uma transação), desde que o saldo não fique negativo; deve retornar o valor efetivamente retirado. 
-Ex. Saldo R$10,00 – retirar $25,00 – Transação criada vai ser de $-10. Saldo ficar 0
-iv.	retornar o saldo da conta (somando todas as transações)
-v.	extrato todos os dados da conta corrente, suas transações 
-c.	Possui a seguinte invariante: o saldo nunca é negativo.
-*/
 
 import java.util.ArrayList;
 import java.time.LocalDateTime;
@@ -28,17 +16,17 @@ public class ContaCorrente {
 	DateTimeFormatter formatoDataHora = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
 
-		// CONSTRUCTOR 
+		// CONSTRUCTOR  
 	public ContaCorrente( Cliente cliente) {
-		Random random = new Random();
-		this.transacao = new ArrayList<>();
+		Random random = new Random(); //para gerar de forma pseudo aleatoria os numeros das conta corrente
+		this.transacao = new ArrayList<>(); 
 		this.agencia = random.nextInt(100) +10;
 		this.numero = random.nextInt(10000) + 1000;
 		this.cliente = cliente;
 	}
 
 
-	//Métodos getters e setters
+	//<------Métodos getters e setters------>
 
 	public int getAgencia() {
 		return this.agencia;
@@ -83,7 +71,7 @@ public class ContaCorrente {
 
 
 
- //Metodos
+ //<------------Metodos----------->
 
 	//Método público para depositar um valor na conta (adicionar uma transação)
 	public void depositar(String descricao, float valor) {
