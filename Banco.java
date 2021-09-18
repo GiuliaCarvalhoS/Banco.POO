@@ -5,7 +5,7 @@ public class Banco {
 	//Método main
 	public static void main(String[] args) {
 
-		//Cria três instâncias de Cliente.
+		//Cria três instâncias de Cliente
 			Cliente andre = new Cliente("Andre");
 
 			Cliente giulia = new Cliente("Giulia");
@@ -25,7 +25,7 @@ public class Banco {
 		
 		// Getters e setters de ContaCorrentes  (isso aqui deveria estar na classe cliente?)
 		 andre.setContaCorrentes(BancoBrasil);
-		//  andre.setContaCorrentes(Next);
+		 andre.setContaCorrentes(Next);
 		 
 		 giulia.setContaCorrentes(Nubak);
 		 giulia.setContaCorrentes(Neon);
@@ -33,7 +33,7 @@ public class Banco {
 		 luca.setContaCorrentes(Itau);
 		 luca.setContaCorrentes(Santander);
 
-		//Chama o método operar para cada instância de Cliente
+		//Chama o método operar (input de descicao e valor e dados da transação)  e imprimir (extrato) para cada instância de Cliente
 
 		andre.operar();
 		giulia.operar();
