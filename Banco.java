@@ -23,7 +23,7 @@ public class Banco {
 		ContaCorrente  Itau = new ContaCorrente( luca);
 		ContaCorrente Santander = new ContaCorrente( luca);
 		
-		// Getters e setters de ContaCorrentes  (isso aqui deveria estar na classe cliente?)
+		// Getters e setters de ContaCorrentes  
 		 andre.setContaCorrentes(BancoBrasil);
 		 andre.setContaCorrentes(Next);
 		 
